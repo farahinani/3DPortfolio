@@ -7,6 +7,8 @@ import { logo, menu, close } from '../assets';
 
 const Navbar = () => {
   const [active, setActive] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`} >
@@ -18,8 +20,8 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}>
           <img src={logo} alt="logo" className='w-9 h-9 object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer'>
-            Farah <span className='sm:block hidden'>| Front-End Developer</span>
+          <p className='text-white text-[18px] font-bold cursor-pointer flex'>
+            Farah &nbsp;<span className='sm:block hidden'>| Web Developer</span>
           </p>
         </Link>
 
@@ -37,6 +39,36 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
+        {/* this is for mobile */}
+        <div className='sm:hidden flex flex-1 justify-end items-center'>
+          <img src={toggle ? close : menu}
+            alt='menu'
+            className='w-[28px] h-[28px] object-contain cursor-pointer'
+            onClick={() => setToggle(!toggle)}
+          />
+
+          <div className={`${!toggle ? 'hidden' : 'flex'} 
+          p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
+            <ul className="list-none flex justify-end items-start flex-col gap-4">
+              {navLinks.map((Link) => (
+                <li
+                  key={Link.id}
+                  className={`${active === Link.title
+                    ? "text-white"
+                    : "text-secondary"
+                    } font-poppins font-medium cursor-pointer text-[16px]`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive(Link.title);
+                  }}
+                >
+                  <a href={`#${Link.id}`}>{Link.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </nav>
   )
