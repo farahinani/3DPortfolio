@@ -42,21 +42,21 @@ export const navLinks = [
 
 const services = [
     {
-        title: "Web Developer",
+        title: "Wordpress Developer",
         icon: web,
     },
     {
-        title: "React Native Developer",
+        title: "Vue.js Developer",
         icon: mobile,
     },
     {
-        title: "Backend Developer",
+        title: "Front-end Developer",
         icon: backend,
     },
-    {
-        title: "Content Creator",
-        icon: creator,
-    },
+    // {
+    //     title: "Content Creator",
+    //     icon: creator,
+    // },
 ];
 
 const technologies = [
